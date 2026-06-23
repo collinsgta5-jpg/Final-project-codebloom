@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+<body>
+  <!------------header------------->
+  <header class="header" id="nav">
+    <a href="#">
+      <!-- full logo: icon + name (desktop/normal) -->
+      <img class="logo logo-full" src="./logo-full.png" alt="logo">
+      <!-- icon only (mobile/scrolled) -->
+      <img class="logo logo-icon" src="./logo-icon.png" alt="logo">
+    </a>
+       <div class="navmenu" id="navMenu">
+          <ul class="navlink">
+             <li><a href="index.html">Home</a></li>
+             <li><a href="about.html">About</a></li>
+             <li><a href="services.html">Services</a></li>
+             <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+         </ul>
+       </div>
+       <i class="bx bx-menu menu-btn"></i>
+  </header>
+
+  <!--------------sub-header session----------------->
+  <section class="sub-header reveal" id="sub-header">
+   <h1><span>Recent</span> Projects</h1>
+  </section>
+
+  <!----------portfolio section------------->
+  <section class="portfolio reveal" id="portfolio">
+    <div class="text-title">
+      <h2>Frontend Development <span>Projects</span></h2>
+    </div>
+    <div class="portfolio-content">
+      <div class="row">
+        <img src="./box1.png" alt="">
+        <div class="cover">
+          <h5>Visual Designs</h5>
+          <p>Logos, icons, social posts, brand visuals — I make things that catch the eye and tell your story. Design with personality, not just decoration.</p>
+          <a href="#"><i class="bx bx-link-external"></i></a>
+        </div>
+      </div>
+      <div class="row">
+        <img src="./box2.png" alt="">
+        <div class="cover">
+          <h5>Visual Designs</h5>
+          <p>Logos, icons, social posts, brand visuals — I make things that catch the eye and tell your story. Design with personality, not just decoration.</p>
+          <a href="#"><i class="bx bx-link-external"></i></a>
+        </div>
+    </div>
+  </section>
+
+  <section class="portfolio reveal" id="portfolio">
+    <div class="text-title">
+      <h2>UI/UX Design <span>Projects</span></h2>
+    </div>
+    <div class="portfolio-content">
+      <div class="row">
+        <img src="./box3.png" alt="">
+        <div class="cover">
+          <h5>Visual Designs</h5>
+          <p>Logos, icons, social posts, brand visuals — I make things that catch the eye and tell your story. Design with personality, not just decoration.</p>
+          <a href="#"><i class="bx bx-link-external"></i></a>
+        </div>
+      </div>
+      <div class="row">
+        <img src="./box4.png" alt="">
+        <div class="cover">
+          <h5>Visual Designs</h5>
+          <p>Logos, icons, social posts, brand visuals — I make things that catch the eye and tell your story. Design with personality, not just decoration.</p>
+          <a href="#"><i class="bx bx-link-external"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio reveal" id="portfolio">
+    <div class="text-title">
+      <h2>Graphics Design <span>Projects</span></h2>
+    </div>
+    <div class="portfolio-content">
+      <div class="row">
+        <img src="./box5.png" alt="">
+        <div class="cover">
+          <h5>Visual Designs</h5>
+          <p>Logos, icons, social posts, brand visuals — I make things that catch the eye and tell your story. Design with personality, not just decoration.</p>
+          <a href="#"><i class="bx bx-link-external"></i></a>
+        </div>
+      </div>
+      <div class="row">
+        <img src="./box6.png" alt="">
+        <div class="cover">
+          <h5>Visual Designs</h5>
+          <p>Logos, icons, social posts, brand visuals — I make things that catch the eye and tell your story. Design with personality, not just decoration.</p>
+          <a href="#"><i class="bx bx-link-external"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--------------------footer----------------------->
+  <footer class="footer">
+    <div class="attribution">
+      <p>Design with <i class="bx bx-heart"></i> By Collins</p>
+    </div>
+    <div class="move-up">
+      <a href="#home"><i class="bx bx-up-arrow-alt"></i></a>
+    </div>
+  </footer>
+
+  <!------------------Js for toggle menu--------------------->
+  <script>
+    var navmenu = document.getElementById("navmenu");
+
+    function openMenu() {
+      navMenu.style.right = "0";
+    }
+
+    function closeMenu() {
+      navMenu.style.right = "-500vw";
+    }
+
+    const header = document.querySelector('header');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } 
+      else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    const menuBtn = document.querySelector('.bx-menu');
+
+    function openMenu() {
+      navMenu.style.right = "0";
+      header.classList.add("menu-open");
+      menuBtn.classList.remove('bx-menu');
+      menuBtn.classList.add('bx-x'); // changes to close icon
+    }
+
+    function closeMenu() {
+      navMenu.style.right = "-200vw";
+      header.classList.remove("menu-open");
+      menuBtn.classList.remove('bx-x');
+      menuBtn.classList.add('bx-menu'); // changes back to hamburger
+    }
+
+    // single click listener that checks which state it's in
+    menuBtn.addEventListener('click', () => {
+      if (menuBtn.classList.contains('bx-x')) {
+       closeMenu();
+      } else {
+       openMenu();
+      }
+    });
+
+    const reveals = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+    });
+    }, { threshold: 0.2 }); // 0.2 = 20% of element visible before it triggers
+
+    reveals.forEach(reveal => observer.observe(reveal));
+  </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+<body>
+  <!------------header------------->
+  <header class="header" id="nav">
+    <a href="#">
+      <!-- full logo: icon + name (desktop/normal) -->
+      <img class="logo logo-full" src="./logo-full.png" alt="logo">
+      <!-- icon only (mobile/scrolled) -->
+      <img class="logo logo-icon" src="./logo-icon.png" alt="logo">
+    </a>
+       <div class="navmenu" id="navMenu">
+          <ul class="navlink">
+             <li><a href="index.html">Home</a></li>
+             <li><a href="about.html">About</a></li>
+             <li><a href="services.html">Services</a></li>
+             <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+         </ul>
+       </div>
+       <i class="bx bx-menu menu-btn"></i>
+  </header>
+
+  <!--------------sub-header session----------------->
+  <section class="sub-header reveal" id="sub-header">
+   <h1>Contact <span>Me!</span></h1>
+  </section>
+
+  <!-------------------contact session--------------------->
+<section class="map">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1982.4906208380614!2d7.5006367008468136!3d6.3964186161566134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1044a11ffd52ef6f%3A0x93568025acb2b1cb!2sEzinifite%20St%2C%20Gariki%2C%20Enugu%20400108%2C%20Enugu!5e0!3m2!1sen!2sng!4v1782188149390!5m2!1sen!2sng" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+  <section class="contact reveal" id="contact">
+    <div class="contact-text">
+      <h4 class="dot">Whatever your project may be...</h4>
+      <p>I'm a Student, a Tech Enthusiast, a design technologist who is obsessed with Technology making the web look good and work well. I am still learning and pushing myself every day, but that is what makes it fun — there is always something new to build or figure out.</p>
+      <div class="list">
+        <li><a href="#">+234 816 1551 381</a></li>
+        <li><a href="#">collinsgta5@gmail.com</a></li>
+        <li><a href="#">Like,Share & Subscribe</a></li>
+      </div>
+      <div class="icons">
+        <a href="https://wa.me/2348161551381" target="_blank"><i class="bx bxl-whatsapp"></i></a>
+        <a href="https://x.com/Collins1059408" target="_blank"><i class="bx bxl-twitter"></i></a>
+        <a href="https://www.instagram.com/collinsgta5?igsh=MXhyc2NlNW9xNDhqMg==" target="_blank"><i class="bx bxl-instagram-alt"></i></a>
+        <a href="https://youtube.com/@collins-s8o?si=lGjbOsumuYcoWkfv" target="_blank"><i class="bx bxl-youtube"></i></a>
+        <a href="https://www.tiktok.com/@collins4271?_r=1&_t=ZS-97RV4kdgGGL" target="_blank"><i class="bx bxl-tiktok"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61579063803896" target="_blank"><i class="bx bxl-facebook"></i></a>
+      </div>
+    </div>
+    <div class="contact-form">
+      <form action="">
+        <input type="name" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <input type="number" placeholder="Your Mobile Number" required>
+        <textarea name="" id="" cols="35" rows="10" placeholder="How Can I Help You"></textarea>
+        <input type="submit" value="Send Message" class="submit">
+      </form>
+    </div>
+  </section>
+
+  <!--------------------footer----------------------->
+  <footer class="footer">
+    <div class="attribution">
+      <p>Design with <i class="bx bx-heart"></i> By Collins</p>
+    </div>
+    <div class="move-up">
+      <a href="#home"><i class="bx bx-up-arrow-alt"></i></a>
+    </div>
+  </footer>
+
+  <!------------------Js for toggle menu--------------------->
+  <script>
+    var navmenu = document.getElementById("navmenu");
+
+    function openMenu() {
+      navMenu.style.right = "0";
+    }
+
+    function closeMenu() {
+      navMenu.style.right = "-500vw";
+    }
+
+    const header = document.querySelector('header');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } 
+      else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    const menuBtn = document.querySelector('.bx-menu');
+
+    function openMenu() {
+      navMenu.style.right = "0";
+      header.classList.add("menu-open");
+      menuBtn.classList.remove('bx-menu');
+      menuBtn.classList.add('bx-x'); // changes to close icon
+    }
+
+    function closeMenu() {
+      navMenu.style.right = "-200vw";
+      header.classList.remove("menu-open");
+      menuBtn.classList.remove('bx-x');
+      menuBtn.classList.add('bx-menu'); // changes back to hamburger
+    }
+
+    // single click listener that checks which state it's in
+    menuBtn.addEventListener('click', () => {
+      if (menuBtn.classList.contains('bx-x')) {
+       closeMenu();
+      } else {
+       openMenu();
+      }
+    });
+
+    const reveals = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+    });
+    }, { threshold: 0.2 }); // 0.2 = 20% of element visible before it triggers
+
+    reveals.forEach(reveal => observer.observe(reveal));
+  </script>
+</body>
+</html>
