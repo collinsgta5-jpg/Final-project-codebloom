@@ -133,7 +133,7 @@
       entry.target.classList.add('active');
     }
     });
-    }, { threshold: 0.2 }); // 0.2 = 10% of element visible before it triggers
+    }, { threshold: 0.1 }); // 0.1 = 10% of element visible before it triggers
 
     reveals.forEach(reveal => observer.observe(reveal));
   </script>
